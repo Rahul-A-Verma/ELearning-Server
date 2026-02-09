@@ -1,23 +1,14 @@
 import { Router } from "express";
 import { isAuth } from "../middleware/isAuth.js";
-import { 
-    checkout, 
-    fetchLecture, 
-    fetchLectures, 
-    getAllCourses, 
-    getMyCourses, 
-    getSingleCourse, 
-    paymentVerification 
-} from "../controller/courseController.js";
+import { checkout, fetchLecture, fetchLectures, getAllCourses, getMyCourses, getSingleCourse, paymentVerification } from "../controller/courseController.js";
 
-const router = Router();
+const route = Router();
 
-router.get("/course/all", getAllCourses);
-router.get("/course/:id", getSingleCourse);
-router.get("/lectures/:id", isAuth, fetchLectures);
-router.get("/lecture/:id", isAuth, fetchLecture);
-router.get("/mycourse", isAuth, getMyCourses);
-router.post("/course/checkout/:id", isAuth, checkout);
-router.post("/verification/:id", isAuth, paymentVerification);
-
-export default router;
+route.get("/course/all", getAllCourses);
+route.get("/course/:id", getSingleCourse);
+route.get("/lectures/:id", isAuth, fetchLectures);
+route.get("/lecture/:id", isAuth, fetchLecture);
+route.get("/mycourse", isAuth, getMyCourses);
+route.post("/course/checkout/:id", isAuth, checkout);
+route.post("/verification/:id", isAuth, paymentVerification);
+export default route;

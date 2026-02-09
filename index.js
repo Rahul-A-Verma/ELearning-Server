@@ -1,13 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDb from "./database/db.js";
+import connectDb from "./database/db.js"
 import Razorpay from "razorpay";
 import cors from "cors";
-
-// Import routes at the top
-import userRoute from "./routes/userRoutes.js";
-import adminRoute from "./routes/adminRoutes.js";
-import courseRoute from "./routes/courseRoute.js";
 
 dotenv.config();
 
@@ -16,31 +11,30 @@ export const instance = new Razorpay({
   key_secret: process.env.Razorpay_Secret,
 });
 
-const app = express();
+let app = express()
 
-// Middleware
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
 
-// Simple Request Logger (Check Render logs to see these)
-app.use((req, res, next) => {
-  console.log(`${req.method} request to ${req.url}`);
-  next();
-});
+const port =process.env.PORT ||3000;
 
-const port = process.env.PORT || 3000;
+app.get('/',(req,res)=>{
+  res.send("Hello")
+})
 
-// Routes
-app.use("/api", userRoute);
-app.use("/api", adminRoute);
-app.use("/api", courseRoute);
+app.use("/uploads",express.static("uploads"))
 
-app.get("/", (req, res) => {
-  res.send("Server is Live");
-});
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-  connectDb();
-});
+import userRoute from "./routes/userRoutes.js"
+import adminRoute from "./routes/adminRoutes.js"
+import courseRoute from "./routes/courseRoute.js"
+app.use('/api',userRoute)
+app.use('/api',adminRoute)
+app.use('/api',courseRoute)
+
+
+app.listen(port, ()=>{
+    console.log(`server is running ${port}`)
+  connectDb()
+}
+)

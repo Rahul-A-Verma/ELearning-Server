@@ -1,13 +1,10 @@
-import { Router } from 'express';
-import { loginUser, myProfile, registerUSer, verifyUser } from "../controller/userController.js";
+import { Router } from 'express'
+import {loginUser, myProfile, registerUSer, verifyUser} from "../controller/userController.js"
 import { isAuth } from '../middleware/isAuth.js';
+const router = Router()
 
-const router = Router();
-
-// Paths are now simpler: /api/register, /api/login, etc.
-router.post('/register', registerUSer);
-router.post("/verify", verifyUser);
-router.post("/login", loginUser);
-router.get("/me", isAuth, myProfile);
-
-export default router;
+router.post('/user/register',registerUSer)
+router.post("/user/verify", verifyUser);
+router.post("/user/login", loginUser);
+router.get("/user/me", isAuth, myProfile);
+export default router
