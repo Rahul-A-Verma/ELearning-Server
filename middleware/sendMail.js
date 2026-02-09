@@ -42,7 +42,7 @@ const sendMail = async(email, subject, data)=>{
         }
         .otp {
             font-size: 36px;
-            color: #7b68ee; /* Purple text */
+            color: #68ccee; /* Purple text */
             margin-bottom: 30px;
         }
     </style>
@@ -50,7 +50,7 @@ const sendMail = async(email, subject, data)=>{
 <body>
     <div class="container">
         <h1>OTP Verification</h1>
-        <p>Hello your (One-Time Password) for your account verification is.</p>
+           <p>Hello ${data.UserName} your (One-Time Password) for your account verification is.</p>
         <p class="otp">${data.otp}</p> 
     </div>
 </body>
