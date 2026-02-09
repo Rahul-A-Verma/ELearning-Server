@@ -24,7 +24,7 @@ export const registerUSer = async (req, res) => {
       email,
       password: hashPassword,
     };
-    console.log("user", user);
+    // console.log("user", user);
     //  console.log("hashPassword", hashPassword);
 
     const otp = Math.floor(Math.random() * 1000000);
