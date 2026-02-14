@@ -9,7 +9,6 @@ route.post("/course/new", isAuth, isAdmin, uploadFiles, createCourse);
 route.post("/course/:id", isAuth, isAdmin, uploadFiles, addLectures);
 route.delete("/course/:id", isAuth, isAdmin, deleteCourse);
 route.delete("/lecture/:id", isAuth, isAdmin, deleteLecture);
-
 route.get("/stats", isAuth, isAdmin, getAllStats);
 route.put("/user/:id", isAuth, updateRole);
 route.get("/users", isAuth, isAdmin, getAllUser);
