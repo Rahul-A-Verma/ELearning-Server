@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import connectDb from "./database/db.js"
 import Razorpay from "razorpay";
 import cors from "cors";
+import dns from 'node:dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 dotenv.config();
 
